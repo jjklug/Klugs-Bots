@@ -1,8 +1,13 @@
 import pybullet as p
+import time
+
 physicsClient = p.connect(p.GUI)
 
-for i in range(999):
-	p.stepSimulation()
 
+for i in range(999):
+	time.sleep(1/60)
+	print(i)
+	p.stepSimulation()
+	
 
 p.disconnect()
