@@ -8,12 +8,12 @@ import random
 #initial setup stuff
 
 #motor variables
-backleg_amplitude = numpy.pi/4
-backleg_frequency = 10.5
+backleg_amplitude = numpy.pi/2
+backleg_frequency = 20
 backleg_phaseOffset = 0
 
 frontleg_amplitude = numpy.pi/4
-frontleg_frequency = 10.5
+frontleg_frequency = 0
 frontleg_phaseOffset = 0
 
 physicsClient = p.connect(p.GUI)
@@ -34,9 +34,11 @@ frontLegSensorValues = numpy.zeros(999)
 targetAngles = numpy.linspace(0, 2*int(numpy.pi), 999)
 backleg_targetAngles = (backleg_amplitude)*numpy.sin(backleg_frequency*targetAngles+backleg_phaseOffset)
 frontleg_targetAngles = (frontleg_amplitude)*numpy.sin(frontleg_frequency*targetAngles+frontleg_phaseOffset)
-numpy.save("data/targetAngles.npy", targetAngles)
 
-
+#saving for analyze.py
+#numpy.save("data/backleg_targetAngles.npy", backleg_targetAngles)
+#numpy.save("data/frontleg_targetAngles.npy", frontleg_targetAngles)
+#exit()
 
 #for loop that runs the simulation
 for i in range(999):
