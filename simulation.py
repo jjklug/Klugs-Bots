@@ -17,16 +17,14 @@ class SIMULATION:
 		self.world = WORLD()
 		self.robot = ROBOT()
 
-		pyrosim.Prepare_To_Simulate(self.robot.robotId)
 
 	def Run(self):
 		#for loop that runs the simulation
 		for i in range(999):
-			print(i)
+			#print(i)
 			time.sleep(1/60)
 			p.stepSimulation()
-			#backLegSensorValues[i] = pyrosim.Get_Touch_Sensor_Value_For_Link("BackLeg")
-			#frontLegSensorValues[i] = pyrosim.Get_Touch_Sensor_Value_For_Link("FrontLeg")
+			self.robot.Sense(i)
 		
 			#pyrosim.Set_Motor_For_Joint(bodyIndex = robotId, jointName = b'Torso_BackLeg', controlMode = p.POSITION_CONTROL, targetPosition = backleg_targetAngles[i], maxForce=25)
 			#pyrosim.Set_Motor_For_Joint(bodyIndex = robotId, jointName = b'Torso_FrontLeg', controlMode = p.POSITION_CONTROL, targetPosition = frontleg_targetAngles[i], maxForce= 25)
