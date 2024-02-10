@@ -10,7 +10,7 @@ class ROBOT:
 	def __init__(self):
 		self.robot = p.loadURDF("body.urdf")
 		self.nn = NEURAL_NETWORK("brain.nndf")
-		
+
 		pyrosim.Prepare_To_Simulate(self.robot)
 		self.Prepare_To_Sense()
 		self.Prepare_To_Act()
@@ -34,4 +34,7 @@ class ROBOT:
 			self.motors[x].Set_Value(self.robot, timestep)
 
 	def Think(self):
+		self.nn.Update()
 		self.nn.Print()
+
+
