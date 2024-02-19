@@ -11,7 +11,8 @@ class SOLUTION:
 	z = 0.5
 
 
-	def __init__(self):
+	def __init__(self, nextAvailableID):
+		self.myID = nextAvailableID
 		self.weights = numpy.random.rand(3, 2)
 		self.weights = (self.weights*2)-1
 
@@ -19,7 +20,7 @@ class SOLUTION:
 		self.Create_World()
 		self.Create_Body()
 		self.Create_Brain()
-		os.system("py simulate.py" + " " + directOrGUI)
+		os.system("start /B py simulate.py " + directOrGUI )
 		fitnessFile = open("fitness.txt", "r")
 		self.fitness = float(fitnessFile.read())
 		fitnessFile.close()
@@ -55,3 +56,6 @@ class SOLUTION:
 		randomRow = random.randint(0,2)
 		randomColumn = random.randint(0,1)
 		self.weights[randomRow][randomColumn] = random.random()*2-1
+
+	def Set_ID(self, nextAvailableID):
+		self.myID = nextAvailableID
