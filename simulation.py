@@ -7,12 +7,8 @@ import time
 
 
 class SIMULATION:
-	def __init__(self, directOrGui):
-		#initial setup stuff
-		if directOrGui == "DIRECT":
-				self.physicsClient = p.connect(p.DIRECT)
-		if directOrGui == "GUI":
-			self.physicsClient = p.connect(p.GUI)
+	def __init__(self):
+		self.physicsClient = p.connect(p.DIRECT)
 		p.setGravity(0,0,-9.8)
 		p.setAdditionalSearchPath(pybullet_data.getDataPath())
 		

@@ -15,11 +15,12 @@ class SOLUTION:
 		self.weights = numpy.random.rand(3, 2)
 		self.weights = (self.weights*2)-1
 
-	def Evaluate(self, directOrGui):
+	def Evaluate(self):
 		self.Create_World()
 		self.Create_Body()
 		self.Create_Brain()	
-		os.system("py simulate.py" + directOrGui)
+		#print(directOrGui)
+		os.system("py simulate.py")
 		fitnessFile = open("fitness.txt", "r")
 		self.fitness = float(fitnessFile.read())
 		fitnessFile.close()
