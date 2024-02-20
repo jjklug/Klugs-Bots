@@ -14,11 +14,12 @@ class PARALLEL_HILL_CLIMBER:
 
 	def evolve(self):
 		for key in self.parents:
-			self.parents[key].Evaluate("GUI")
+			self.parents[key].Start_Simulation("GUI")
+		for key in self.parents:
+			self.parents[key].Wait_For_Simulation_To_End()
 		#self.parent.Evaluate("GUI")
 		#for currentGeneration in range(c.numberOfGenerations):
 			#self.Evolve_For_One_Generation()
-		pass
 	
 	def Evolve_For_One_Generation(self):
 		self.Spawn()

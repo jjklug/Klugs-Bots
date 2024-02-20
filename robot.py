@@ -9,6 +9,7 @@ from pyrosim.neuralNetwork import NEURAL_NETWORK
 
 class ROBOT:
 	def __init__(self, solutionID):
+		self.solutionID	= solutionID
 		self.robot = p.loadURDF("body.urdf")
 		self.nn = NEURAL_NETWORK("brain" + str(solutionID) + ".nndf")
 		os.system("del brain" + str(solutionID) + ".nndf")
@@ -48,7 +49,11 @@ class ROBOT:
 		positionOfLinkZero = stateOfLinkZero[0]
 		xCoordinateOfLinkZero = positionOfLinkZero[0]
 
-		f = open("fitness.txt", "w")
+
+		f = open("tmp" + str(self.solutionID) + ".txt", "w")
 		f.write(str(xCoordinateOfLinkZero))
 		f.close()
+		os.rename("tmp"+str(self.solutionID)+".txt" , "fitness"+str(self.solutionID)+".txt")
+		
+		
 
