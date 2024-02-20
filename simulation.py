@@ -7,7 +7,8 @@ import time
 
 
 class SIMULATION:
-	def __init__(self, directOrGUI):
+	def __init__(self, directOrGUI, solutionID):
+		self.directOrGUI = directOrGUI
 		if directOrGUI =="DIRECT":
 			self.physicsClient = p.connect(p.DIRECT)
 		else:
@@ -17,13 +18,14 @@ class SIMULATION:
 		
 
 		self.world = WORLD()
-		self.robot = ROBOT()
+		self.robot = ROBOT(solutionID)
 
 
 	def Run(self):
 		#for loop that runs the simulation
 		for i in range(999):
-			time.sleep(1/1000)
+			if self.directOrGUI	== "GUI":
+				time.sleep(1/120)
 			p.stepSimulation()
 			self.robot.Sense(i)
 			self.robot.Think()
