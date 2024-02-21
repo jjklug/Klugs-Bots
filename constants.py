@@ -8,5 +8,5 @@ phaseOffset = 0
 
 numSensorNeurons = 3
 numMotorNeurons = 2
-numberOfGenerations = 1
-populationSize = 1
+numberOfGenerations = 10
+populationSize = 10
